@@ -1,0 +1,26 @@
+[DEFAULT]
+project_id = dvspoc
+input_csv_file_path = input_sql.csv
+output_csv_file_path = output_execution_results.csv
+output_sql_file = converted_queries.sql
+learning_repo_csv_path = learning_repo.csv
+loop_developer_max_retries = 3
+
+[DATABASE]
+inst_uri = projects/dvspoc/locations/us-east4/clusters/instancewith11gb/instances/primaryinst
+user = postgres
+password = your-db-password
+db = postgres
+
+[VERTEX_AI]
+location = us-central1
+model = gemini-1.5-flash-001
+
+[JIRA]
+server = https://google-team-ic2zy7js.atlassian.net/
+email = dipintim@google.com
+api_token = ATATT3xFfGF0TlTSO2YJOMK2Uw6fl_PCGJxhukAXjtpNc4gkAzK49hPI9flhLY2NqKHwqof-t6pjr-6XJsh5hPJQNcf5qgk7vetn3STI0e-LY2xDVmAaVRr86nsd38nM-Cu_kCbuaoxvPAvUIeJH25g4QICHTpzJC-aO0ODkcm5CMqEWtsxg_YU=E23461DA
+project_key = KAN
+
+[GEMINI_API]
+api_key = your-gemini-api-key-from-google-ai-studio

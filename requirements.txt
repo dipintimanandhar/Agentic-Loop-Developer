@@ -1,0 +1,15 @@
+# Core AI and Agent Framework
+langchain
+langchain-google-vertexai
+google-cloud-aiplatform
+google-generativeai
+
+# Web Interface
+gradio
+
+# Project Specifics
+jira
+pandas
+sqlalchemy
+pg8000
+google-cloud-alloydb-connector

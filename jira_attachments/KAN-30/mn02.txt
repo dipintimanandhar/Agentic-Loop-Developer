@@ -1,0 +1,67 @@
+Meeting Title: Oracle to PostgreSQL Migration - SQL Query Conversion Strategy
+
+Date: May 26, 2025
+Time: 2:00 PM - 3:00 PM IST
+Location: Conference Room 3B / Virtual (Zoom Link: [example_zoom_link])
+
+Attendees:
+* Sarah (Project Lead)
+* John (DBA - Oracle Specialist)
+* Priya (Developer - PostgreSQL Specialist)
+* Mike (Application Developer)
+* Rina (QA Lead)
+
+Agenda:
+1.  Review scope of Oracle SQL queries needing conversion for Project Phoenix.
+2.  Identify potential complexities and challenges.
+3.  Discuss tools and methodologies for conversion.
+4.  Define action items and assign responsibilities for the conversion task.
+
+Discussion Points:
+
+* **Project Overview & Goal:** Sarah kicked off the meeting by reiterating the overall goal of migrating the "LegacyCRM" application's database from Oracle to PostgreSQL. Today's focus is specifically on the SQL query conversion aspect.
+* **Scope of Conversion:**
+    * John presented an inventory of approximately 250 Oracle SQL queries currently embedded in application code and 75 stored procedures/functions.
+    * Mike confirmed these queries are critical for application functionality.
+* **Key Challenges Identified:**
+    * **Proprietary Oracle Functions:** Discussed Oracle-specific functions like `DECODE`, `NVL`, `ADD_MONTHS`, `LISTAGG`, and date formatting functions (e.g., `TO_DATE` with Oracle-specific format masks) that will need direct PostgreSQL equivalents or workarounds. Priya mentioned `CASE` statements for `DECODE`, `COALESCE` for `NVL`, and interval arithmetic or `TO_CHAR` with different patterns for date functions.
+    * **PL/SQL to PL/pgSQL:** Conversion of Oracle PL/SQL blocks within stored procedures to PostgreSQL's PL/pgSQL will be a significant effort. Syntax differences in looping, variable declaration, and exception handling were highlighted.
+    * **Outer Join Syntax:** Older Oracle queries might use the `(+)` syntax for outer joins, which needs to be converted to standard ANSI SQL `LEFT JOIN`/`RIGHT JOIN`.
+    * **Data Type Mappings:** While mostly straightforward, potential nuances with `NUMBER` to `NUMERIC`/`INTEGER`, and `VARCHAR2` to `VARCHAR` or `TEXT` were briefly touched upon.
+    * **Sequence Handling:** `ROWNUM` in Oracle needs to be replaced with `ROW_NUMBER()` window function or alternative logic in PostgreSQL. Oracle sequences (`.nextval`) have a slightly different usage pattern compared to PostgreSQL sequences.
+    * **Performance Testing:** Rina emphasized the need for thorough performance testing of converted queries, as direct translations might not always be optimal.
+* **Tools & Methodologies:**
+    * Priya suggested using a combination of manual review and potentially some automated conversion tools (e.g., Ora2Pg for initial assessment and bulk changes, followed by manual refinement).
+    * The team agreed on a phased approach:
+        1.  Prioritize conversion of queries for core application modules.
+        2.  Developers to work closely with DBAs for complex conversions.
+        3.  Unit testing for each converted query/procedure.
+* **Documentation:** All conversions and rationale for changes (especially for complex workarounds) must be documented.
+
+Action Items:
+
+1.  **Task: Convert Oracle SQL queries and PL/SQL blocks to PostgreSQL syntax.**
+    * **Description:** Systematically convert all identified Oracle SQL queries and PL/SQL procedures/functions from the "LegacyCRM" application to be compatible with PostgreSQL. This includes addressing differences in functions, join syntax, data type handling, and procedural language constructs.
+    * **Assignees:**
+        * Priya (Lead for PostgreSQL syntax and PL/pgSQL conversion)
+        * Mike (Application-level integration and testing of converted queries)
+        * John (Support for understanding existing Oracle logic and validation)
+    * **Queries to be converted:** Initial list of ~250 embedded queries and 75 stored procedures/functions (detailed list attached to project tracker: PHOENIX-123).
+    * **Target Due Date (Phase 1 - Core Modules):** June 30, 2025
+    * **Priority:** High
+
+2.  **Research Ora2Pg Tool:** Priya to evaluate Ora2Pg for its effectiveness in aiding the initial conversion pass. Present findings by May 30, 2025.
+    * **Assignee:** Priya
+    * **Due Date:** May 30, 2025
+
+3.  **Develop Testing Strategy:** Rina to draft a specific testing plan for validating converted SQL queries, focusing on data integrity and performance.
+    * **Assignee:** Rina
+    * **Due Date:** June 6, 2025
+
+Next Steps:
+* Priya to schedule a follow-up session next week to discuss Ora2Pg findings and a detailed plan for tackling the first batch of queries.
+* All attendees to review the query inventory list (PHOENIX-123) for any missed items.
+
+Meeting Adjourned: 3:05 PM IST
+
+Prepared by: [Your Name/Meeting Scribe Name]

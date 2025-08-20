@@ -1,0 +1,46 @@
+Meeting Notes: Python Number Addition Feature
+Date: May 23, 2025
+Project: Calculator App - Phase 1
+Attendees:
+
+Sri (Lead Developer)
+John (Junior Developer)
+Maya (QA Engineer)
+Discussion Points 
+Core Requirement: The team discussed the foundational requirement of implementing a feature to add two numbers within the Python backend of the "Calculator App." This is a P0 (highest priority) task for the initial release.
+
+Input Method:
+
+It was agreed that for the initial implementation, the two numbers would be passed as arguments to a dedicated Python function.
+Future consideration: Accepting input via a simple API endpoint.
+Implementation Approach:
+
+John suggested using the basic + operator in Python for the addition, e.g., result = num1 + num2.
+Sri confirmed this is the most straightforward and Pythonic way for numerical addition.
+The team briefly touched upon creating a reusable function, e.g., def add_numbers(num1, num2):, to encapsulate this logic for better modularity and testability.
+Data Types:
+
+For now, the function will assume inputs are integers or floating-point numbers.
+Maya raised the point about type checking and error handling (e.g., what if a string is passed?). It was decided that basic error handling (e.g., a try-except block for TypeError) should be included in the function.
+Testing:
+
+Maya will prepare test cases including:
+Positive integers
+Negative integers
+Floating-point numbers
+Zero values
+One integer and one float
+Invalid input types (to check error handling)
+
+Decisions 
+A Python function named add_numbers(num1, num2) will be created.
+The function will use the + operator for addition.
+Basic type checking and TypeError handling will be implemented within the function.
+The function should return the sum.
+
+Action Items 
+John: Develop the add_numbers(num1, num2) function with error handling. (Due: May 27, 2025)
+Maya: Create unit tests for the add_numbers function based on the discussed scenarios. (Due: May 28, 2025)
+Sri: Review John's implementation and Maya's test cases. (Due: May 29, 2025)
+
+Next Meeting: May 30, 2025, to review progress and discuss the next arithmetic operation.
